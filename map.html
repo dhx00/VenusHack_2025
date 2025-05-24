@@ -7,6 +7,7 @@
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles/map.css" />
   <style>
     #map { height: 100vh; width: 100vw; }
     #slider-container {
@@ -27,8 +28,8 @@
 <!--加载 timeline-->
   <div id = "slider-container">
   <label for="year-slider">Choose a specific year:</label>
-  <input type="range" id="year-slider" min="1900" max="2030" value="1950" step= "10">
-  <span id="year-display">1950</span>
+  <input type="range" id="year-slider" min="1900" max="2024" value="2024" step="1">
+  <span id="year-display">2024</span>
   <button id = "reset-to-all">Display all</button>
   <script src = "timecontrol.js"></script>
 </div>
@@ -40,7 +41,22 @@
 <script type="module">
   import { mapConfig } from './js/config/mapConfig.js';
   import { MarkerManager } from './js/markers/markerManager.js';
+  import { TimelineManager } from './js/timeline/timelineManager.js';
 
+  // 初始化地图
+  const map = L.map('map', mapConfig);
+  
+  // 加载底图
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // 初始化标记点管理器
+  const markerManager = new MarkerManager(map);
+  
+  // 初始化时间轴管理器
+  const timelineManager = new TimelineManager(markerManager);
+  timelineManager.loadEvents();
 </script>
 <script src = "map.js"></script>
 

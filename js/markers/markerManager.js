@@ -29,10 +29,8 @@ export class MarkerManager {
     }
 
     updateMarkers(events) {
-        // 清除所有现有的markers
         this.clearMarkers();
 
-        // 根据事件创建新的markers
         events.forEach(event => {
             if (event.lat && event.lng) {
                 this.createMarkerWithHoverPopup(event.lat, event.lng, event.time, event.summary);

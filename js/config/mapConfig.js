@@ -1,17 +1,17 @@
 export const mapConfig = {
     center: [30, -90],
     zoom: 3,
-    // 设置地图边界
+
     maxBounds: [
-        [-90, -180], // 南西边界
-        [90, 180]    // 北东边界
+        [-90, -180],
+        [90, 180]
     ],
     minZoom: 2,
     maxZoom: 18,
-    // 防止拖动到边界之外
-    maxBoundsViscosity: 1.0,  // 完全限制在边界内
-    bounceAtZoomLimits: true, // 到达缩放限制时反弹
-    worldCopyJump: false      // 禁止世界地图复制
+
+    maxBoundsViscosity: 1.0,  
+    bounceAtZoomLimits: true,
+    worldCopyJump: false
 };
 
 export const markerStyle = {
