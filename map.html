@@ -7,9 +7,31 @@
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="styles/map.css" />
+  <style>
+    #map { height: 100vh; width: 100vw; }
+    #slider-container {
+      position: absolute;
+      top: 30px;
+      left: 80px;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 10px;
+      border-radius: 8px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      font-family: sans-serif;
+    }
+  </style>
 </head>
+
 <body>
+<!--加载 timeline-->
+  <div id = "slider-container">
+  <label for="year-slider">Choose a specific year:</label>
+  <input type="range" id="year-slider" min="1900" max="2030" value="1950" step= "10">
+  <span id="year-display">1950</span>
+  <button id = "reset-to-all">Display all</button>
+  <script src = "timecontrol.js"></script>
+</div>
 
 <div id="map"></div>
 
@@ -19,26 +41,8 @@
   import { mapConfig } from './js/config/mapConfig.js';
   import { MarkerManager } from './js/markers/markerManager.js';
 
-  // 初始化地图
-  const map = L.map('map', mapConfig);
-  
-  // 加载底图
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
-  // 初始化标记点管理器
-  const markerManager = new MarkerManager(map);
-
-  // 加载 JSON 数据
-  fetch("events.json")
-    .then(res => res.json())
-    .then(data => {
-        console.log("Loaded:", data);
-        markerManager.updateMarkers(data);
-    })
-    .catch(err => console.error("JSON load error:", err));
 </script>
+<script src = "map.js"></script>
 
 </body>
 </html>
