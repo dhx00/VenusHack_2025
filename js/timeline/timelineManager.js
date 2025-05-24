@@ -5,23 +5,19 @@ export class TimelineManager {
         this.resetButton = document.getElementById("reset-to-all");
         this.allEvents = null;
 
-        // 绑定事件监听器
         this.bindEventListeners();
     }
 
     bindEventListeners() {
-        // 监听滑块变化
         this.slider.addEventListener('input', () => {
             this.updateMapByYear();
         });
 
-        // 监听重置按钮
         this.resetButton.addEventListener('click', () => {
             this.showAllEvents();
         });
     }
 
-    // 加载所有事件数据
     loadEvents() {
         fetch("events.json")
             .then(res => res.json())
@@ -32,14 +28,12 @@ export class TimelineManager {
             .catch(err => console.error("JSON load error:", err));
     }
 
-    // 显示所有事件
     showAllEvents() {
         if (this.allEvents) {
             this.markerManager.updateMarkers(this.allEvents);
         }
     }
 
-    // 根据年份更新地图
     updateMapByYear() {
         if (!this.allEvents) return;
 

@@ -5,81 +5,47 @@
   <title>Women's History Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Leaflet CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="styles/map.css" />
-  <style>
-    #map { height: 100vh; width: 100vw; }
-    #slider-container {
-      position: absolute;
-      top: 30px;
-      left: 80px;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 10px;
-      border-radius: 8px;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      font-family: sans-serif;
-    }
-    #reset-to-all {
-        padding: 8px 16px;
-        font-size: 14px;
-        background-color: #4a90e2;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-    #reset-to-all:hover {
-    background-color: #357ab8;
-    transform: scale(1.03);
-    }
-
-    #reset-to-all:active {
-    background-color: #2d5d94;
-    transform: scale(0.98);
-    }
-  </style>
+  <link rel="stylesheet" href="styles/panel.css" />
+  <link rel="stylesheet" href="styles/timeline.css" />
 </head>
 
 <body>
-<!--加载 timeline-->
-  <div id = "slider-container">
-  <label for="year-slider">Choose a specific year:</label>
-  <input type="range" id="year-slider" min="1900" max="2024" value="2024" step="1">
-  <span id="year-display">2024</span>
-  <button id = "reset-to-all">Display all</button>
-  <script src = "timecontrol.js"></script>
-</div>
+  <div id="slider-container">
+    <label for="year-slider">Choose a specific year:</label>
+    <input type="range" id="year-slider" min="1900" max="2024" value="2024" step="1">
+    <span id="year-display">2024</span>
+    <button id="reset-to-all">Display all</button>
+  </div>
 
-<div id="map"></div>
+  <div id="map"></div>
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script type="module">
-  import { mapConfig } from './js/config/mapConfig.js';
-  import { MarkerManager } from './js/markers/markerManager.js';
-  import { TimelineManager } from './js/timeline/timelineManager.js';
+  <div id="info-panel">
+    <button id="info-panel-close">&times;</button>
+    <div id="info-panel-content"></div>
+  </div>
 
-  // 初始化地图
-  const map = L.map('map', mapConfig);
-  
-  // 加载底图
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="timecontrol.js"></script>
+  <script type="module">
+    import { mapConfig } from './js/config/mapConfig.js';
+    import { MarkerManager } from './js/markers/markerManager.js';
+    import { TimelineManager } from './js/timeline/timelineManager.js';
 
-  // 初始化标记点管理器
-  const markerManager = new MarkerManager(map);
-  
-  // 初始化时间轴管理器
-  const timelineManager = new TimelineManager(markerManager);
-  timelineManager.loadEvents();
-</script>
-<script src = "map.js"></script>
+    const map = L.map('map', mapConfig);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
+    const markerManager = new MarkerManager(map);
+    
+    const timelineManager = new TimelineManager(markerManager);
+    timelineManager.loadEvents();
+  </script>
+  <script src="map.js"></script>
 </body>
 </html>
