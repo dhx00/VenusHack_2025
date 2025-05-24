@@ -18,7 +18,7 @@
 #reset-to-all {
     padding: 8px 16px;
     font-size: 14px;
-    background-color: #4a90e2;
+    background-color: rgb(230, 150, 50);
     color: white;
     border: none;
     border-radius: 6px;
@@ -28,11 +28,37 @@
 }
 
 #reset-to-all:hover {
-    background-color: #357ab8;
+    background-color: rgb(230, 150, 50);
     transform: scale(1.03);
 }
 
 #reset-to-all:active {
-    background-color: #2d5d94;
+    background-color:rgb(249, 192, 50);
     transform: scale(0.98);
 } 
+input[type="range"] {
+  -webkit-appearance: none; /* remove default style */
+  width: 200px;
+  height: 8px;
+  background: transparent; /* has to be transparent to further define other style */
+  margin: 10px;
+}
+
+/* ✅ Chrome / Safari slider */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: rgb(230, 150, 50);  /* track color */
+  border-radius: 4px;
+}
+
+/* ✅ Chrome / Safari slider part */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: #ffffff;         /* slider color  */
+  border: 2px solid rgb(230, 150, 50);
+  border-radius: 50%;
+  margin-top: -6px; /* let it center vertically */
+  cursor: pointer;
+}
