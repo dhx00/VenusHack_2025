@@ -8,6 +8,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 20px;
     z-index: 9999;
+    font-family: Georgia, serif;
     top: 50%;
     transform: translateY(-50%);
     overflow-y: auto;
@@ -38,6 +39,7 @@
     background: none;
     border: none;
     font-size: 24px;
+    font-family: Georgia, serif;
     color: #666;
     padding: 5px;
     opacity: 0.8;
