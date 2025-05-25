@@ -28,12 +28,12 @@
 }
 
 #reset-to-all:hover {
-    background-color: rgb(230, 150, 50);
+    background-color: rgb(249, 192, 50);
     transform: scale(1.03);
 }
 
 #reset-to-all:active {
-    background-color:rgb(249, 192, 50);
+    background-color:rgb(230, 150, 50);
     transform: scale(0.98);
 } 
 input[type="range"] {
@@ -47,7 +47,7 @@ input[type="range"] {
 /* ✅ Chrome / Safari slider */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 8px;
-  background: rgb(230, 150, 50);  /* track color */
+  background: rgb(249, 192, 50);  /* track color */
   border-radius: 4px;
 }
 
@@ -57,7 +57,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   width: 20px;
   background: #ffffff;         /* slider color  */
-  border: 2px solid rgb(230, 150, 50);
+  border: 2px solid rgb(249, 192, 50);
   border-radius: 50%;
   margin-top: -6px; /* let it center vertically */
   cursor: pointer;
